@@ -58,7 +58,7 @@ A full-featured job portal built with MongoDB, Express.js, React, and Node.js. S
 ### ⚙️  Frontend Setup
 
 ```bash
-git clone https://github.com/Dev-Rohan1/job-insider.git
+https://github.com/Lalithreddy9/Job_Portal.git
 cd frontend
 npm install
 npm run dev
@@ -67,7 +67,7 @@ npm run dev
 ### ⚙️  Backend Setup
 
 ```bash
-git clone https://github.com/Dev-Rohan1/job-insider.git
+https://github.com/Lalithreddy9/Job_Portal.git
 cd backend
 npm install
 npm run server
