@@ -16,14 +16,15 @@ app.use(cors());
 app.use(express.json());
 app.use(clerkMiddleware());
 
-connectDB();
-Cloudinary();
+await connectDB();
+await Cloudinary();
 
 app.get("/", (req, res) => res.send("Api is working"));
+
 app.post("/webhook", webhookController);
-app.use("/company", companyRoutes);
-app.use("/job", JobRoutes);
-app.use("/user", userRoutes);
+app.use("/api/company", companyRoutes);
+app.use("/api/job", JobRoutes);
+app.use("/api/user", userRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

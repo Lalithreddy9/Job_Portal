@@ -26,6 +26,8 @@ const App = () => {
 
         {companyToken && (
           <Route path="/dashboard" element={<Dashboard />}>
+            {/* 👇 This will be the default route */}
+            <Route index element={<ManageJob />} />
             <Route path="add-job" element={<AddJob />} />
             <Route path="manage-job" element={<ManageJob />} />
             <Route path="view-applications" element={<ViewApplications />} />

@@ -53,7 +53,7 @@ const Applications = () => {
       }
 
       const { data } = await axios.post(
-        `${backendUrl}/user/update-resume`,
+        `${backendUrl}/api/user/update-resume`,
         formData,
         {
           headers: {

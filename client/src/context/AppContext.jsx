@@ -25,7 +25,7 @@ export const AppContextProvider = ({ children }) => {
     if (!companyToken) return;
     setLoading(true);
     try {
-      const { data } = await axios.get(`${backendUrl}/company/get-company`, {
+      const { data } = await axios.get(`${backendUrl}/api/company/get-company`, {
         headers: { token: companyToken },
       });
 
@@ -48,7 +48,7 @@ export const AppContextProvider = ({ children }) => {
   const fetchJobsData = async () => {
     setLoading(true);
     try {
-      const { data } = await axios.get(`${backendUrl}/job/job-list`);
+      const { data } = await axios.get(`${backendUrl}/api/job/job-list`);
       if (data.success) {
         setJobs(data.jobList);
       } else {
@@ -67,7 +67,7 @@ export const AppContextProvider = ({ children }) => {
       const token = await getToken();
       if (!token) throw new Error("User token not found");
 
-      const { data } = await axios.get(`${backendUrl}/user/user-data`, {
+      const { data } = await axios.get(`${backendUrl}/api/user/user-data`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -90,7 +90,7 @@ export const AppContextProvider = ({ children }) => {
       const token = await getToken();
       if (!token) throw new Error("Token not found");
 
-      const { data } = await axios.get(`${backendUrl}/user/user-application`, {
+      const { data } = await axios.get(`${backendUrl}/api/user/user-application`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 

@@ -13,7 +13,7 @@ const ViewApplications = () => {
   const viewApplicationsFetchData = async () => {
     setLoading(true);
     try {
-      const { data } = await axios.get(`${backendUrl}/company/applicants`, {
+      const { data } = await axios.get(`${backendUrl}/api/company/applicants`, {
         headers: {
           token: localStorage.getItem("companyToken"),
         },
@@ -34,7 +34,7 @@ const ViewApplications = () => {
   const changeApplicationStatus = async (id, status) => {
     try {
       const { data } = await axios.post(
-        `${backendUrl}/company/change-status`,
+        `${backendUrl}/api/company/change-status`,
         { id, status },
         {
           headers: {

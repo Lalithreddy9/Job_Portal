@@ -8,6 +8,7 @@ import Loader from "./Loader";
 const JobListing = () => {
   const { isSearched, searchFilter, setSearchFilter, jobs, loading } =
     useContext(AppContext);
+    console.log("Raw Jobs Data:", jobs); 
 
   const [currentPage, setCurrentPage] = useState(1);
   const [showFilter, setShowFilter] = useState(false);

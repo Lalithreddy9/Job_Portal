@@ -1,11 +1,10 @@
 import { LoaderCircle, LogOutIcon } from "lucide-react";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import {
   Link,
   NavLink,
   Outlet,
   useNavigate,
-  useLocation,
 } from "react-router-dom";
 import { assets } from "../assets/assets";
 import { AppContext } from "../context/AppContext";
@@ -15,7 +14,6 @@ import Footer from "../components/Footer";
 const Dashboard = () => {
   const { companyData, loading, error } = useContext(AppContext);
   const navigate = useNavigate();
-  const location = useLocation();
 
   const sidebarLinks = [
     {
@@ -41,20 +39,14 @@ const Dashboard = () => {
     navigate("/recuiter-login");
   };
 
-  useEffect(() => {
-    if (location.pathname === "/dashboard") {
-      navigate("manage-job");
-    }
-    document.title = "Insider Job | Dashboard";
-  }, [location.pathname, navigate]);
-
   return (
     <>
-      {/* Top Navigation Bar */}
+      {/* Top Navbar */}
       <div className="flex items-center justify-between border-b border-gray-300 py-3 bg-white sticky top-0 z-10">
         <Link to="/dashboard">
           <img className="h-9" src={assets.logo} alt="Insider Job Logo" />
         </Link>
+
         {error ? (
           <LoaderCircle className="animate-spin text-gray-700" />
         ) : loading ? (
@@ -111,8 +103,8 @@ const Dashboard = () => {
         </div>
 
         {/* Main Content */}
-        <div className="flex-1  pl-4 pt-4 overflow-auto">
-          <Outlet />
+        <div className="flex-1 pl-4 pt-4 overflow-auto">
+          <Outlet /> {/* 👈 Nested route content will load here */}
         </div>
       </div>
       <Footer />

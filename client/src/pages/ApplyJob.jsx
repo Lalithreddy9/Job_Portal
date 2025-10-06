@@ -60,7 +60,7 @@ const ApplyJob = () => {
       const token = await getToken();
 
       const { data } = await axios.post(
-        `${backendUrl}/user/apply-job`,
+        `${backendUrl}/api/user/apply-job`,
         {
           jobId: jobData?._id,
         },

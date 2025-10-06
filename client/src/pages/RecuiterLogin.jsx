@@ -18,7 +18,7 @@ const RecuiterLogin = () => {
     e.preventDefault();
 
     try {
-      const { data } = await axios.post(`${backendUrl}/company/login`, {
+      const { data } = await axios.post(`${backendUrl}/api/company/login`, {
         email,
         password,
       });

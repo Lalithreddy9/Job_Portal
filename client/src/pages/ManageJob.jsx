@@ -16,7 +16,7 @@ const ManageJob = () => {
     setError(null);
     try {
       const { data } = await axios.get(
-        `${backendUrl}/company/company-posted-jobs`,
+        `${backendUrl}/api/company/company-posted-jobs`,
         {
           headers: {
             token: localStorage.getItem("companyToken"),
@@ -40,7 +40,7 @@ const ManageJob = () => {
   const handleToggleVisibility = async (id) => {
     try {
       const { data } = await axios.post(
-        `${backendUrl}/company/change-visibility`,
+        `${backendUrl}/api/company/change-visibility`,
         { id },
         {
           headers: {

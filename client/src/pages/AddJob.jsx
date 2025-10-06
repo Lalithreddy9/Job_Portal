@@ -44,7 +44,7 @@ const AddJob = () => {
 
     try {
       const { data } = await axios.post(
-        `${backendUrl}/company/post-job`,
+        `${backendUrl}/api/company/post-job`,
         {
           title,
           description,

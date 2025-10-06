@@ -70,7 +70,7 @@ const RecruiterSignup = () => {
       }
 
       const { data } = await axios.post(
-        `${backendUrl}/company/register`,
+        `${backendUrl}/api/company/register`,
         formData,
         {
           headers: {
