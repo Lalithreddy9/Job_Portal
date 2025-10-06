@@ -12,7 +12,15 @@ import Cloudinary from "./src/utils/cloudinary.js";
 
 const app = express();
 
-app.use(cors());
+// ✅ CORS configuration
+const allowedOrigins = ["https://job-portal-ug8s.vercel.app"]; // your frontend URL
+
+app.use(cors({
+  origin: allowedOrigins,
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization", "token"]
+}));
+
 app.use(express.json());
 app.use(clerkMiddleware());
 

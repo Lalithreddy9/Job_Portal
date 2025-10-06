@@ -2,9 +2,7 @@
 
 A full-featured job portal built with MongoDB, Express.js, React, and Node.js. Streamlining recruitment by connecting employers with top talent through an intuitive platform.
 
-![Application Preview](https://img.youtube.com/vi/VIIaMCBeQF0/maxresdefault.jpg)
 
-[![Live Demo](https://img.shields.io/badge/Visit_Live_Demo-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://job-insider-frontend.vercel.app)
 
 ## ✨ Key Features
 

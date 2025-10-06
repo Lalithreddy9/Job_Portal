@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
-import Quill from "quill"; // ✅ Fix import capitalization
+import Quill from "quill";
 import "quill/dist/quill.snow.css";
 import { AppContext } from "../context/AppContext";
 import axios from "axios";
@@ -12,13 +12,13 @@ const AddJob = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("Programming");
-  const [location, setLocation] = useState("Dhaka");
+  const [location, setLocation] = useState("Hyderabad");
   const [level, setLevel] = useState("Intermediate");
   const [salary, setSalary] = useState(0);
 
   const { backendUrl, companyToken } = useContext(AppContext);
 
-  // ✅ Initialize Quill Editor
+  // Initialize Quill Editor
   useEffect(() => {
     if (!quillRef.current && editorRef.current) {
       quillRef.current = new Quill(editorRef.current, {
@@ -33,11 +33,11 @@ const AddJob = () => {
     }
   }, []);
 
-  // ✅ Submit handler only on form submit
   const addJobPostSubmitHandler = async (e) => {
     e.preventDefault();
 
-    if (!description) {
+    // Prevent submitting empty description
+    if (!description || description === "<p><br></p>") {
       toast.error("Description is required.");
       return;
     }
@@ -45,29 +45,21 @@ const AddJob = () => {
     try {
       const { data } = await axios.post(
         `${backendUrl}/api/company/post-job`,
-        {
-          title,
-          description,
-          category,
-          location,
-          level,
-          salary,
-        },
-        {
-          headers: {
-            token: companyToken,
-          },
-        }
+        { title, description, category, location, level, salary },
+        { headers: { token: companyToken } }
       );
 
       if (data.success) {
         toast.success("Job posted successfully!");
+
+        // Reset form fields
         setTitle("");
         setDescription("");
+        setCategory("Programming");
+        setLocation("Hyderabad");
+        setLevel("Intermediate");
         setSalary(0);
-        const [category, setCategory] = useState("Programming");
-        const [location, setLocation] = useState("Dhaka");
-        const [level, setLevel] = useState("Intermediate");
+
         if (quillRef.current) quillRef.current.setContents([]);
       } else {
         toast.error(data.message);
@@ -135,13 +127,16 @@ const AddJob = () => {
               onChange={(e) => setLocation(e.target.value)}
               className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             >
-              <option value="Dhaka">Dhaka</option>
-              <option value="Rangpur">Rangpur</option>
-              <option value="Barishal">Barishal</option>
-              <option value="Khulna">Khulna</option>
-              <option value="Mymensingh">Mymensingh</option>
-              <option value="Rajshahi">Rajshahi</option>
-              <option value="Sylhet">Sylhet</option>
+              <option value="Hyderabad">Hyderabad</option>
+              <option value="Bengaluru">Bengaluru</option>
+              <option value="Chennai">Chennai</option>
+              <option value="Mumbai">Mumbai</option>
+              <option value="Pune">Pune</option>
+              <option value="Delhi">Delhi</option>
+              <option value="Kolkata">Kolkata</option>
+              <option value="Ahmedabad">Ahmedabad</option>
+              <option value="Jaipur">Jaipur</option>
+              <option value="Lucknow">Lucknow</option>
             </select>
           </div>
 
